@@ -1,13 +1,29 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
-import prismaClient from '../lib/prisma';
+import { Claims, getSession } from '@auth0/nextjs-auth0';
+import prisma from '../lib/prisma';
 
 export type Context = {
+  user?: Claims
+  accessToken?: string
   prisma: PrismaClient
 };
 
-export async function createContext(): Promise<Context> {
-  const prisma = prismaClient();
+interface Props {
+  req: NextApiRequest,
+  res: NextApiResponse
+}
+
+export async function createContext({ req, res }: Props): Promise<Context> {
+  const session = getSession(req, res);
+
+  if (!session) return { prisma };
+
+  const { user, accessToken } = session;
+
   return {
+    user,
     prisma,
+    accessToken,
   };
 }

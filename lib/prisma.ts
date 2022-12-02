@@ -14,4 +14,4 @@ const prisma = (): PrismaClient => {
   return global.prisma;
 };
 
-export default prisma;
+export default prisma();
