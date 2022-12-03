@@ -25,6 +25,13 @@ function Header() {
           </svg>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          {user && (
+            <Link href="/admin">
+              <div className="flex itemx-center justify-center mr-5 capitalize bg-blue-500 py-1 px-3 rounded-md text-white">
+                + Create
+              </div>
+            </Link>
+          )}
           {user ? (
             <div className="flex items-center space-x-5">
               <Link
@@ -33,7 +40,7 @@ function Header() {
               >
                 Logout
               </Link>
-              <img alt="profile" className="rounded-full w-12 h-12" src={user.picture || ''} />
+              <img referrerPolicy="no-referrer" alt="profile" className="rounded-full w-12 h-12" src={user.picture || ''} />
             </div>
           ) : (
             <Link
