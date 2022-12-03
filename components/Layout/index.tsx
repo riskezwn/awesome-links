@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Header from './Header';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode | ReactNode[]
 }
 
 function Layout({ children }: Props) {

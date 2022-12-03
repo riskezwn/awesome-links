@@ -12,6 +12,7 @@ datasource db {
 
 model Link {
   id String @id @default(uuid())
+  index BigInt @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   title String
@@ -29,7 +30,7 @@ model User {
   email String? @unique
   image String?
   role Role @default(USER)
-  bookmarks Link[]
+  favorites Link[]
 }
 
 enum Role {
