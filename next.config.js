@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['nextjs.org', 'www.prisma.io', 'www.apollographql.com', 'tailwindui.com', 'res.cloudinary.com', 'asistatic.azureedge.net'],
+    domains: ['riskezwn-awesomelinks.s3.amazonaws.com'],
   },
 };
 

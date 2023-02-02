@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import toast, { Toaster } from 'react-hot-toast';
 import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 import prisma from '../../lib/prisma';
 
 const BookmarkLinkMutation = gql`
@@ -56,9 +57,9 @@ function Link({ link }: any) {
           )}
         </button>
         <h1 className="font-bold text-4xl pb-4">{link.title}</h1>
-        <img src={link.imageUrl} alt={link.title} className="shadow-lg rounded-lg" />
+        <Image width={800} height={400} src={link.imageUrl} alt={link.title} className="shadow-lg rounded-lg w-full max-h-96 object-cover" />
         <p className="text-xl py-6">{link.description}</p>
-        <a className="text-blue-500 text-xl" href={`${link.url}`}>
+        <a className="text-blue-500 text-xl hover:underline" href={`${link.url}`} target="_blank" rel="noreferrer">
           {link.url}
         </a>
       </div>
